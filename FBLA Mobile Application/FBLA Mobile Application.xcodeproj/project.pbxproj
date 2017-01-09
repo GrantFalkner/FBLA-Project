@@ -16,6 +16,7 @@
 		F21B550E1E0B22FE00AD55AB /* FBLA_Mobile_ApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21B550D1E0B22FE00AD55AB /* FBLA_Mobile_ApplicationTests.swift */; };
 		F21B55191E0B293A00AD55AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F21B55181E0B293A00AD55AB /* GoogleService-Info.plist */; };
 		F21B55201E0B2AD000AD55AB /* grass background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F21B551F1E0B2ACF00AD55AB /* grass background.jpg */; };
+		F28D5C3A1E22EED200581B9B /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28D5C391E22EED200581B9B /* DonateViewController.swift */; };
 		F2BAEEEC1E0DBA2B009E1DDA /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAEEEB1E0DBA2B009E1DDA /* SignUp.swift */; };
 		F2BAEEEE1E0E009A009E1DDA /* Sign In.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAEEED1E0E009A009E1DDA /* Sign In.swift */; };
 		F2BAEEF01E198A66009E1DDA /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAEEEF1E198A66009E1DDA /* Store.swift */; };
@@ -47,6 +48,7 @@
 		F21B550F1E0B22FE00AD55AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21B55181E0B293A00AD55AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F21B551F1E0B2ACF00AD55AB /* grass background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "grass background.jpg"; path = "../../../../Downloads/grass background.jpg"; sourceTree = "<group>"; };
+		F28D5C391E22EED200581B9B /* DonateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonateViewController.swift; path = ../DonateViewController.swift; sourceTree = "<group>"; };
 		F2BAEEEB1E0DBA2B009E1DDA /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		F2BAEEED1E0E009A009E1DDA /* Sign In.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Sign In.swift"; path = "../Sign In.swift"; sourceTree = "<group>"; };
 		F2BAEEEF1E198A66009E1DDA /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				F21B551F1E0B2ACF00AD55AB /* grass background.jpg */,
 				F21B55181E0B293A00AD55AB /* GoogleService-Info.plist */,
+				F28D5C391E22EED200581B9B /* DonateViewController.swift */,
 				F21B54F81E0B22FE00AD55AB /* AppDelegate.swift */,
 				F2BAEEEB1E0DBA2B009E1DDA /* SignUp.swift */,
 				F2BAEEED1E0E009A009E1DDA /* Sign In.swift */,
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2BAEEF01E198A66009E1DDA /* Store.swift in Sources */,
+				F28D5C3A1E22EED200581B9B /* DonateViewController.swift in Sources */,
 				F2BAEEEE1E0E009A009E1DDA /* Sign In.swift in Sources */,
 				F21B54FB1E0B22FE00AD55AB /* ViewController.swift in Sources */,
 				F2BAEEEC1E0DBA2B009E1DDA /* SignUp.swift in Sources */,

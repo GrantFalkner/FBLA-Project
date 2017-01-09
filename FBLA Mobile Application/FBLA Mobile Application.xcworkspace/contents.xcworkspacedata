@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:DonateViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:Sign In.swift">
    </FileRef>
    <FileRef

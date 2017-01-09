@@ -17,11 +17,11 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.FBLA-Project-2017</string>
+	<string>com.example.FBLA-Mobile-Application</string>
 	<key>PROJECT_ID</key>
-	<string>fbla-2017</string>
+	<string>real-fbla-project</string>
 	<key>STORAGE_BUCKET</key>
-	<string>fbla-2017.appspot.com</string>
+	<string>real-fbla-project.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -35,6 +35,6 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:390888727879:ios:14f1a50452467147</string>
 	<key>DATABASE_URL</key>
-	<string>https://fbla-2017.firebaseio.com</string>
+	<string>https://real-fbla-project.firebaseio.com/</string>
 </dict>
 </plist>
