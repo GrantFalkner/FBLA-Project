@@ -10,10 +10,24 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class Store: UIViewController {
+struct post {
+    let name : String!
+    let image : String!
+    let price : String!
+}
 
-    @IBOutlet weak var Table: UITableView!
+
+class Store: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var posts = [post]()
+    var bubso = ["tub", "bub", "rub"]
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+
     @IBAction func Donate(_ sender: UIBarButtonItem) {
+
         if FIRAuth.auth()?.currentUser != nil {
             // User is signed in.
             // ...
@@ -30,6 +44,10 @@ class Store: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         FIRDatabase.database().reference().child("posts").observe(.childAdded, with: {snapshot in
         print(snapshot)
             var snapshotValue = snapshot.value as? NSDictionary
@@ -42,28 +60,31 @@ class Store: UIViewController {
             print("\(name)")
             print("\(price)")
             print("\(image)")
+            
+            self.posts.insert(post(name : name, image:image, price : price), at: 0)
             DispatchQueue.main.async(execute: {
-                self.Table.reloadData()
+                self.tableView.reloadData()
                 })
             })
         }
-        // Do any additional setup after loading the view.
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-    */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        cell.textLabel?.text = posts[indexPath.row].name
+        
+        return cell
+    }
+    
 
 }
