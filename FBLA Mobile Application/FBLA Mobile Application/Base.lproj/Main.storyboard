@@ -392,6 +392,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="Table" destination="qKo-8j-YYH" id="aPY-1n-LDL"/>
                         <segue destination="2Kr-EN-NP5" kind="show" identifier="StoreToDonate" animates="NO" id="0xz-Yy-8lf"/>
                         <segue destination="8Q4-hi-U77" kind="show" identifier="StoreToSignIn" animates="NO" id="7rx-5L-Z6T"/>
                     </connections>

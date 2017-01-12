@@ -64,10 +64,9 @@ class DonateViewController: UIViewController, UIImagePickerControllerDelegate, U
                         if let url = url {
                             
                             let user = FIRAuth.auth()?.currentUser
-                            let email = user?.email
                             
                             let postInfo : [String : Any] = ["uid": user!.uid,
-                                                             "item name" : self.ItemName.text!,
+                                                             "itemName" : self.ItemName.text!,
                                                              "price" : self.ItemPrice.text!,
                                                              "condition" : Int(self.Slider.value),
                                                              "image" : url.absoluteString]
