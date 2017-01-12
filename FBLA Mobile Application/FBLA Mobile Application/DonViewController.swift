@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import FirebaseDatabase
 
-class DonateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DonViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let picker = UIImagePickerController()
     var StorageRef: FIRStorageReference!
@@ -46,9 +47,12 @@ class DonateViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func Post(_ sender: UIButton)
         {
+            let currentTimeInt = Int(NSDate().timeIntervalSince1970)
+            let currentTime = String(currentTimeInt)
+            
             if (ItemName.text != "" && ItemPrice.text != "" && ImageName.image != nil)
             {
-                let imageRef = self.StorageRef.child("\(FIRAuth.auth()?.currentUser?.uid).jpg")
+                let imageRef = self.StorageRef.child("\(currentTime).jpg")
                 let data = UIImageJPEGRepresentation(self.ImageName.image!, 1)
                 let upload = imageRef.put(data!, metadata: nil, completion: { (metadata, error) in
                     if (error != nil)
@@ -65,18 +69,24 @@ class DonateViewController: UIViewController, UIImagePickerControllerDelegate, U
                             
                             let user = FIRAuth.auth()?.currentUser
                             
+                            let email = String((user?.email)!)!
+                            
                             let postInfo : [String : Any] = ["uid": user!.uid,
+                                                             "email" : email,
+                                                             "currentTime": currentTime,
                                                              "itemName" : self.ItemName.text!,
                                                              "price" : self.ItemPrice.text!,
-                                                             "condition" : Int(self.Slider.value),
+                                                             "condition" : "\(Int(self.Slider.value))",
                                                              "image" : url.absoluteString]
-                            self.ref.child("posts").child(user!.uid).setValue(postInfo)
+                            self.ref.child("posts").child(currentTime).setValue(postInfo)
                         }
                     
                     })
                     
                 })
                 upload.resume()
+                self.performSegue(withIdentifier: "DonateToStore", sender: nil)
+                
             }
             else
             {

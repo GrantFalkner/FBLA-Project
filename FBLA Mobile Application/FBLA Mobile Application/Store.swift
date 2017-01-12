@@ -14,6 +14,14 @@ struct post {
     let name : String!
     let image : String!
     let price : String!
+    let time : String!
+}
+
+final class Shared {
+    static let shared = Shared() //lazy init, and it only runs once
+    
+    var stringValue : String!
+    var boolValue   : Bool!
 }
 
 
@@ -57,11 +65,13 @@ class Store: UIViewController, UITableViewDataSource, UITableViewDelegate {
             snapshotValue = snapshot.value as? NSDictionary
             let image = snapshotValue!["image"] as? String
             snapshotValue = snapshot.value as? NSDictionary
+            let time = snapshotValue!["currentTime"] as? String
+            snapshotValue = snapshot.value as? NSDictionary
             print("\(name)")
             print("\(price)")
             print("\(image)")
             
-            self.posts.insert(post(name : name, image:image, price : price), at: 0)
+            self.posts.insert(post(name : name, image:image, price : price, time:time), at: 0)
             DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
                 })
@@ -81,9 +91,24 @@ class Store: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = posts[indexPath.row].name
+        let labelName = view.viewWithTag(1) as! UILabel
+        labelName.text = "       " + posts[indexPath.row].name
         
+        let labelPrice = view.viewWithTag(2) as! UILabel
+        labelPrice.text = "$" + posts[indexPath.row].price
+        
+        let imageView = view.viewWithTag(5) as! UIImageView
+        
+        if let url = URL.init(string: posts[indexPath.row].image) {
+            imageView.downloadedFrom(url: url)
+        }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You selected cell #\(posts[indexPath.row].time)!")
+        let selected = posts[indexPath.row].time
+        Shared.shared.stringValue = selected
+        self.performSegue(withIdentifier: "StoreToStoreItem", sender: nil)
     }
     
 
