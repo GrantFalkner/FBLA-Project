@@ -117,23 +117,29 @@ class StoreItem: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
 
     @IBAction func postMessage(_ sender: Any) {
-        FIRDatabase.database().reference().child("posts").child(value!).observeSingleEvent(of: .value, with: {snapshot in
-            var snapshotValue = snapshot.value as? NSDictionary
-            let user = snapshotValue!["email"] as? String
-            snapshotValue = snapshot.value as? NSDictionary
 
-            let userShort = user?.components(separatedBy: "@")
-            print("\(userShort?[0])")
+        if FIRAuth.auth()?.currentUser != nil {
+            // User is signed in.
+            let user = FIRAuth.auth()?.currentUser
             
-
+            let email = String((user?.email)!)!
+            let userShort = email.components(separatedBy: "@")
+            print("\(userShort[0])")
             
-            let messageInfo : [String : Any] = ["user": userShort![0],
+            
+            
+            let messageInfo : [String : Any] = ["user": userShort[0],
                                                 "message": self.chatText.text!]
             
             self.ref.child(self.value!).childByAutoId().setValue(messageInfo)
-            
-        })
-        
+            self.chatText.text = ""
+
+        }
+        else {
+            // No user is signed in.
+            self.performSegue(withIdentifier: "StoreItemToSignIn", sender: nil)
+        }
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,7 +160,9 @@ class StoreItem: UIViewController, UITableViewDataSource, UITableViewDelegate{
         return cell
     }
     
-    
+    @IBAction func textField(_ sender: AnyObject) {
+        self.view.endEditing(true);
+    }
     
     
     override func didReceiveMemoryWarning() {

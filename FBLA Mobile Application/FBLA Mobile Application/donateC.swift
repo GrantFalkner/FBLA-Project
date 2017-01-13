@@ -103,11 +103,16 @@ class donateC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         StorageRef = Storage.child("posts")
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func textField(_ sender: AnyObject) {
+        self.view.endEditing(true);
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

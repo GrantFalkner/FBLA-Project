@@ -39,6 +39,16 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         FIRApp.configure()
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            // User is signed in.
+            self.performSegue(withIdentifier: "HomeToStore", sender: nil)
+            
+        }
+    }
+    
+    @IBAction func textField(_ sender: AnyObject) {
+        self.view.endEditing(true);
     }
 
     override func didReceiveMemoryWarning() {
