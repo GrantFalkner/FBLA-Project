@@ -18,9 +18,9 @@
 		F21B55201E0B2AD000AD55AB /* grass background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F21B551F1E0B2ACF00AD55AB /* grass background.jpg */; };
 		F250A38C1E2754CD0094C53A /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F250A38B1E2754CD0094C53A /* StoreItem.swift */; };
 		F250A3901E28397A0094C53A /* Sign In.swift in Sources */ = {isa = PBXBuildFile; fileRef = F250A38F1E28397A0094C53A /* Sign In.swift */; };
-		F250A3921E283B8E0094C53A /* DonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F250A3911E283B8E0094C53A /* DonViewController.swift */; };
 		F250A3941E28427E0094C53A /* backgroundIdeaBlur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F250A3931E28427E0094C53A /* backgroundIdeaBlur.jpg */; };
 		F250A3961E2842E40094C53A /* backgroundIdea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F250A3951E2842E40094C53A /* backgroundIdea.jpg */; };
+		F250A3981E2853EB0094C53A /* donateC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F250A3971E2853EB0094C53A /* donateC.swift */; };
 		F2BAEEEC1E0DBA2B009E1DDA /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAEEEB1E0DBA2B009E1DDA /* SignUp.swift */; };
 		F2BAEEF01E198A66009E1DDA /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAEEEF1E198A66009E1DDA /* Store.swift */; };
 /* End PBXBuildFile section */
@@ -53,9 +53,9 @@
 		F21B551F1E0B2ACF00AD55AB /* grass background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "grass background.jpg"; path = "../../../../Downloads/grass background.jpg"; sourceTree = "<group>"; };
 		F250A38B1E2754CD0094C53A /* StoreItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		F250A38F1E28397A0094C53A /* Sign In.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sign In.swift"; sourceTree = "<group>"; };
-		F250A3911E283B8E0094C53A /* DonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonViewController.swift; sourceTree = "<group>"; };
 		F250A3931E28427E0094C53A /* backgroundIdeaBlur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = backgroundIdeaBlur.jpg; path = ../../../backgroundIdeaBlur.jpg; sourceTree = "<group>"; };
 		F250A3951E2842E40094C53A /* backgroundIdea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = backgroundIdea.jpg; path = ../../../backgroundIdea.jpg; sourceTree = "<group>"; };
+		F250A3971E2853EB0094C53A /* donateC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = donateC.swift; sourceTree = "<group>"; };
 		F2BAEEEB1E0DBA2B009E1DDA /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		F2BAEEEF1E198A66009E1DDA /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,8 +127,8 @@
 				F2BAEEEB1E0DBA2B009E1DDA /* SignUp.swift */,
 				F2BAEEEF1E198A66009E1DDA /* Store.swift */,
 				F250A38F1E28397A0094C53A /* Sign In.swift */,
+				F250A3971E2853EB0094C53A /* donateC.swift */,
 				F250A38B1E2754CD0094C53A /* StoreItem.swift */,
-				F250A3911E283B8E0094C53A /* DonViewController.swift */,
 				F21B54FA1E0B22FE00AD55AB /* ViewController.swift */,
 				F21B54FC1E0B22FE00AD55AB /* Main.storyboard */,
 				F21B54FF1E0B22FE00AD55AB /* Assets.xcassets */,
@@ -306,10 +306,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2BAEEF01E198A66009E1DDA /* Store.swift in Sources */,
+				F250A3981E2853EB0094C53A /* donateC.swift in Sources */,
 				F250A38C1E2754CD0094C53A /* StoreItem.swift in Sources */,
 				F21B54FB1E0B22FE00AD55AB /* ViewController.swift in Sources */,
 				F2BAEEEC1E0DBA2B009E1DDA /* SignUp.swift in Sources */,
-				F250A3921E283B8E0094C53A /* DonViewController.swift in Sources */,
 				F21B54F91E0B22FE00AD55AB /* AppDelegate.swift in Sources */,
 				F250A3901E28397A0094C53A /* Sign In.swift in Sources */,
 			);

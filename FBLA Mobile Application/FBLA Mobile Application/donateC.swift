@@ -11,7 +11,7 @@ import Firebase
 import FirebaseStorage
 import FirebaseDatabase
 
-class DonViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class donateC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let picker = UIImagePickerController()
     var StorageRef: FIRStorageReference!

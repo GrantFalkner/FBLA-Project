@@ -32,7 +32,19 @@ class Store: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var Signinout: UIBarButtonItem!
     
+    @IBAction func Signinoutbutton(_ sender: Any) {
+        if FIRAuth.auth()?.currentUser != nil {
+            // User is signed in.
+           try! FIRAuth.auth()!.signOut()
+           self.Signinout.title = "Sign In"
+        }
+        else {
+            self.performSegue(withIdentifier: "StoreToSignIn", sender: nil)
+            
+        }
+    }
 
     @IBAction func Donate(_ sender: UIBarButtonItem) {
 
@@ -56,8 +68,17 @@ class Store: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            // User is signed in.
+            self.Signinout.title = "Sign Out"
+        }
+        else {
+            // No user is signed in.
+            self.Signinout.title = "Sign In"
+        }
+
         FIRDatabase.database().reference().child("posts").observe(.childAdded, with: {snapshot in
-        print(snapshot)
             var snapshotValue = snapshot.value as? NSDictionary
             let name = snapshotValue!["itemName"] as? String
             snapshotValue = snapshot.value as? NSDictionary
@@ -67,9 +88,6 @@ class Store: UIViewController, UITableViewDataSource, UITableViewDelegate {
             snapshotValue = snapshot.value as? NSDictionary
             let time = snapshotValue!["currentTime"] as? String
             snapshotValue = snapshot.value as? NSDictionary
-            print("\(name)")
-            print("\(price)")
-            print("\(image)")
             
             self.posts.insert(post(name : name, image:image, price : price, time:time), at: 0)
             DispatchQueue.main.async(execute: {

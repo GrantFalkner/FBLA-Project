@@ -30,9 +30,16 @@ extension UIImageView {
     }
 }
 
+struct messageStruct{
+    let message : String!
+    let username : String!
+}
 
-class StoreItem: UIViewController {
+
+class StoreItem: UIViewController, UITableViewDataSource, UITableViewDelegate{
     var ref: FIRDatabaseReference!
+    
+    var messages = [messageStruct]()
 
     @IBOutlet weak var nav: UINavigationBar!
     @IBOutlet weak var image: UIImageView!
@@ -42,6 +49,7 @@ class StoreItem: UIViewController {
     @IBOutlet weak var date: UILabel!
     
     @IBOutlet weak var chatText: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     
     
     let value = Shared.shared.stringValue
@@ -49,6 +57,9 @@ class StoreItem: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         ref = FIRDatabase.database().reference()
         
         
@@ -85,6 +96,21 @@ class StoreItem: UIViewController {
             
         })
 
+        
+        FIRDatabase.database().reference().child(value!).observe(.childAdded, with: {snapshot in
+            var snapshotValue = snapshot.value as? NSDictionary
+            let username = snapshotValue!["user"] as? String
+            snapshotValue = snapshot.value as? NSDictionary
+            let message = snapshotValue!["message"] as? String
+            snapshotValue = snapshot.value as? NSDictionary
+            
+            self.messages.insert(messageStruct(message : message, username: username), at: 0)
+            DispatchQueue.main.async(execute: {
+                self.tableView.reloadData()
+            })
+
+            })
+
         // Do any additional setup after loading the view.
     }
     
@@ -109,6 +135,26 @@ class StoreItem: UIViewController {
         })
         
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let labelUser = view.viewWithTag(10) as! UILabel
+        labelUser.text = messages[indexPath.row].username
+
+        let labelMessage = view.viewWithTag(11) as! UILabel
+        labelMessage.text = messages[indexPath.row].message
+        
+        return cell
+    }
+    
+    
     
     
     override func didReceiveMemoryWarning() {
